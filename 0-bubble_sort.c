@@ -1,6 +1,7 @@
 #include<stdio.h> // include stdio.h library
 #define MAX 5
 #include "sort.h"
+#include <string.h>
 
 /*
  *  bubble_sort() takes an array and sorts it
@@ -17,14 +18,14 @@ void bubble_sort(int *arr, size_t size)
         // re-initialize is_swapped to 0 after every passthrough       
         is_swapped = 0;  
 
-        for(int j = 0; j < size - 1 - i; j++)
+        for(int n = 0; n < size - 1 - i; n++)
         {            
-            if(arr[j] > arr[j+1]) // compare adjacent elements
+            if(arr[n] > arr[n+1]) // compare adjacent elements
             {
                 // swap adjacent elements
-                tmp = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = tmp;
+                tmp = arr[n];
+                arr[n] = arr[n+1];
+                arr[n+1] = tmp;
 
                 // set is_swapped to 1, to indicate
                 // that we have made at least one 
