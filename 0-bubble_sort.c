@@ -1,42 +1,33 @@
-// C program for implementation of Bubble sort 
-#include <stdio.h>
-#include "sort.h" 
- 
-void swap(int *xp, int *yp) 
-{ 
-	int temp = *xp; 
-	*xp = *yp; 
-	*yp = temp; 
-} 
+#include "sort.h"
+/**
+ *bubble_sort - Function that sorts an array of ints
+ *using bubble sort algorithm
+ *
+ *@array: array of ints
+ *@size: size of array
+ *
+ */
+void bubble_sort(int *array, size_t size)
+{
+	int temp;
+	size_t i, k;
 
-// A function to implement bubble sort 
-void bubbleSort(int arr[], int n) 
-{ 
-	int i, j; 
-	for (i = 0; i < n-1; i++)	 
-	
-	// Last i elements are already in place 
-	for (j = 0; j < n-i-1; j++) 
-		if (arr[j] > arr[j+1]) 
-			swap(&arr[j], &arr[j+1]); 
-} 
+	if (!array || !size)
+		return;
 
-/* Function to print an array */
-void printArray(int arr[], int size) 
-{ 
-	int i; 
-	for (i = 0; i < size; i++) 
-		printf("%d ",arr[i]); 
-	printf("\n"); 
-} 
-
-// Driver code 
-int main() 
-{ 
-	int arr[] = {3,1,8,2,0,5,6}; // array initialisation 
-	int n = sizeof(arr)/sizeof(arr[0]); 
-	bubbleSort(arr, n); // function call to sort the array
-	printf("Sorted array: \n"); 
-	printArray(arr, n); 
-	return 0; 
-} 
+	i = 0;
+	while (i < size)
+	{
+		for (k = 0; k < size - 1; k++)
+		{
+			if (array[k] > array[k + 1])
+			{
+				temp = array[k];
+				array[k] = array[k + 1];
+				array[k + 1] = temp;
+				print_array(array, size);
+			}
+		}
+		i++;
+	}
+}
