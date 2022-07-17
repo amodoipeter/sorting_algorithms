@@ -1,45 +1,42 @@
-#include<stdio.h> // include stdio.h library
-#define MAX 5
-#include "sort.h"
-#include <string.h>
+// C program for implementation of Bubble sort 
+#include <stdio.h>
+#include "sort.h" 
+ 
+void swap(int *xp, int *yp) 
+{ 
+	int temp = *xp; 
+	*xp = *yp; 
+	*yp = temp; 
+} 
 
-/*
- *  bubble_sort() takes an array and sorts it
- *  in the ascending order
- */
+// A function to implement bubble sort 
+void bubbleSort(int arr[], int n) 
+{ 
+	int i, j; 
+	for (i = 0; i < n-1; i++)	 
+	
+	// Last i elements are already in place 
+	for (j = 0; j < n-i-1; j++) 
+		if (arr[j] > arr[j+1]) 
+			swap(&arr[j], &arr[j+1]); 
+} 
 
-void bubble_sort(int *arr, size_t size)
-{
-    int tmp,  // temporary variable to hold one of the values while swapping
-        is_swapped; // variable to indicate whether we have made any swaps during the passthrough
+/* Function to print an array */
+void printArray(int arr[], int size) 
+{ 
+	int i; 
+	for (i = 0; i < size; i++) 
+		printf("%d ",arr[i]); 
+	printf("\n"); 
+} 
 
-    for(int i = 0; i < size; i++)
-    {
-        // re-initialize is_swapped to 0 after every passthrough       
-        is_swapped = 0;  
-
-        for(int n = 0; n < size - 1 - i; n++)
-        {            
-            if(arr[n] > arr[n+1]) // compare adjacent elements
-            {
-                // swap adjacent elements
-                tmp = arr[n];
-                arr[n] = arr[n+1];
-                arr[n+1] = tmp;
-
-                // set is_swapped to 1, to indicate
-                // that we have made at least one 
-                // swap during the passthrough
-                is_swapped = 1;               
-            }     
-        }        
-
-        // if no swaps are made in the last passthrough,
-        // exit the outer for loop
-
-        if (!is_swapped)
-        {
-            break;
-        }
-    }        
-}
+// Driver code 
+int main() 
+{ 
+	int arr[] = {3,1,8,2,0,5,6}; // array initialisation 
+	int n = sizeof(arr)/sizeof(arr[0]); 
+	bubbleSort(arr, n); // function call to sort the array
+	printf("Sorted array: \n"); 
+	printArray(arr, n); 
+	return 0; 
+} 
