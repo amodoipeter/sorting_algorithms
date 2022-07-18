@@ -51,4 +51,3 @@ Module.symvers
 Mkfile.old
 dkms.con
 0-main.c
-.vscode
